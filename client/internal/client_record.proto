@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package internal;
+
+message ClientRecord {
+    string ID = 1;
+    string Name = 2;
+    string Secret = 3;
+    repeated string RedirectURIs = 4;
+    repeated string GrantTypes = 5;
+    repeated string ResponseTypes = 6;
+    string Scope = 7;
+    string Owner = 8;
+    string PolicyURI = 9;
+    string TermsOfServiceURI = 10;
+    string ClientURI = 11;
+    string LogoURI = 12;
+    repeated string Contacts = 13;
+    bool Public = 14;
+}

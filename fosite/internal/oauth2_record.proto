@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package internal;
+
+message Val {
+    repeated string val = 1;
+}
+
+message Oauth2Record {
+    string Signature = 1;
+    string Request = 2;
+    int64 RequestedAt = 3;
+    string Client = 4;
+    repeated string Scopes = 5;
+    repeated string GrantedScopes = 6;
+    map<string, Val> Form = 7;
+    bytes Session = 8;
+}
