@@ -1,4 +1,4 @@
-package backend
+package internal
 
 import (
 	"database/sql"
@@ -7,11 +7,11 @@ import (
 	"github.com/vpugar/boltdbclient"
 )
 
-const driverName = "fakeBoltDd"
+const DriverName = "fakeBoltDd"
 
 func init() {
 	println("Openning boltdb driver")
-	sql.Register(driverName, &FakeBoltDdDriver{})
+	sql.Register(DriverName, &FakeBoltDdDriver{})
 }
 
 type FakeBoltDdDriver struct{}

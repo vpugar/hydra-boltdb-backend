@@ -7,7 +7,8 @@ import (
 	"github.com/ory/hydra/pkg"
 	"github.com/pkg/errors"
 	"github.com/vpugar/boltdbclient"
-	"github.com/vpugar/hydra-boltdb-backend/client"
+	//"github.com/vpugar/hydra-boltdb-backend/client"
+	client2 "github.com/ory/hydra/client"
 	"github.com/vpugar/hydra-boltdb-backend/fosite/internal"
 )
 
@@ -35,10 +36,10 @@ var (
 
 type Oauth2Manager struct {
 	client        *boltdbclient.Client
-	clientManager *client.ClientManager
+	clientManager client2.Manager
 }
 
-func NewOauth2Manager(client *boltdbclient.Client, clientManager *client.ClientManager) (*Oauth2Manager, error) {
+func NewOauth2Manager(client *boltdbclient.Client, clientManager client2.Manager) (*Oauth2Manager, error) {
 	// Initialize top-level buckets.
 	if err := client.InitEntity(func(tx *bolt.Tx) error {
 		if _, err := tx.CreateBucketIfNotExists(HYDRA_OAUTH2_OIDC_BUCKET_BYTES); err != nil {

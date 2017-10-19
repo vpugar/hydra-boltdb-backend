@@ -26,7 +26,7 @@ type ClientManager struct {
 	hasher fosite.Hasher
 }
 
-func NewClientManager(client *boltdbclient.Client, hasher *fosite.Hasher) (*ClientManager, error) {
+func NewClientManager(client *boltdbclient.Client, hasher fosite.Hasher) (*ClientManager, error) {
 	// Initialize top-level buckets.
 	if err := client.InitEntity(func(tx *bolt.Tx) error {
 		if _, err := tx.CreateBucketIfNotExists(HYDRA_CLIENT_BUCKET_BYTES); err != nil {
@@ -39,7 +39,7 @@ func NewClientManager(client *boltdbclient.Client, hasher *fosite.Hasher) (*Clie
 
 	return &ClientManager{
 		client: client,
-		hasher: *hasher,
+		hasher: hasher,
 	}, nil
 }
 
@@ -82,20 +82,7 @@ func (cm *ClientManager) GetConcreteClient(id string) (*client.Client, error) {
 }
 
 func (cm *ClientManager) GetClient(ctx context.Context, id string) (fosite.Client, error) {
-	c := &fosite.DefaultClient{}
-	return c, cm.client.ReadTransaction(func(tx *bolt.Tx) error {
-		b := tx.Bucket(HYDRA_CLIENT_BUCKET_BYTES)
-
-		if v := b.Get([]byte(id)); v == nil {
-			return errors.Wrap(pkg.ErrNotFound, id)
-		} else {
-			if err := internal.FositeClientUnmarshal(v, c); err != nil {
-				return errors.WithStack(err)
-			} else {
-				return nil
-			}
-		}
-	})
+	return cm.GetConcreteClient(id)
 }
 
 func (cm *ClientManager) CreateClient(c *client.Client) error {

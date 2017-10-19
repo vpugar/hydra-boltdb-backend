@@ -8,6 +8,7 @@ import (
 
 	"github.com/gogo/protobuf/proto"
 	"github.com/ory/fosite"
+	"github.com/ory/hydra/client"
 	"github.com/pkg/errors"
 )
 
@@ -37,7 +38,7 @@ func OAuth2RequesterMarshal(signature string, v fosite.Requester) ([]byte, error
 	})
 }
 
-func OAuth2RequesterUnmarshal(data []byte, v *fosite.Request, session fosite.Session, cm fosite.ClientManager) error {
+func OAuth2RequesterUnmarshal(data []byte, v *fosite.Request, session fosite.Session, cm client.Manager) error {
 	var pb Oauth2Record
 
 	if err := proto.Unmarshal(data, &pb); err != nil {

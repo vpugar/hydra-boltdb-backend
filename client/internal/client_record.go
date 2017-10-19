@@ -2,7 +2,6 @@ package internal
 
 import (
 	"github.com/gogo/protobuf/proto"
-	"github.com/ory/fosite"
 	"github.com/ory/hydra/client"
 )
 
@@ -46,22 +45,6 @@ func ClientUnmarshal(data []byte, v *client.Client) error {
 	v.ClientURI = pb.ClientURI
 	v.LogoURI = pb.LogoURI
 	v.Contacts = pb.Contacts
-	v.Public = pb.Public
-
-	return nil
-}
-
-func FositeClientUnmarshal(data []byte, v *fosite.DefaultClient) error {
-	var pb ClientRecord
-	if err := proto.Unmarshal(data, &pb); err != nil {
-		return err
-	}
-
-	v.ID = pb.ID
-	v.Secret = []byte(pb.Secret)
-	v.RedirectURIs = pb.RedirectURIs
-	v.GrantTypes = pb.GrantTypes
-	v.ResponseTypes = pb.ResponseTypes
 	v.Public = pb.Public
 
 	return nil
