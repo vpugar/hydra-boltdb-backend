@@ -6,6 +6,6 @@ install:
   - go get -u github.com/mattn/goveralls golang.org/x/tools/cmd/cover github.com/Masterminds/glide github.com/mitchellh/gox github.com/ory/go-acc
   - glide install
 script:
-  - go-acc -o coverage.out $(glide novendor | grep -v plugin)
   - go test -race -short $(glide novendor | grep -v plugin)
+  - go-acc -o coverage.out $(glide novendor | grep -v plugin)
   - goveralls -service=travis-ci -coverprofile=coverage.out
