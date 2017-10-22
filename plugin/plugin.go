@@ -8,12 +8,12 @@ import (
 	"github.com/ory/hydra/pkg"
 	"github.com/ory/hydra/warden/group"
 	"github.com/ory/ladon"
-	"github.com/vpugar/hydra-boltdb-backend/backend/internal"
 	client2 "github.com/vpugar/hydra-boltdb-backend/client"
 	fosite2 "github.com/vpugar/hydra-boltdb-backend/fosite"
 	group2 "github.com/vpugar/hydra-boltdb-backend/group"
 	jwk2 "github.com/vpugar/hydra-boltdb-backend/jwk"
 	ladon2 "github.com/vpugar/hydra-boltdb-backend/ladon"
+	"github.com/vpugar/hydra-boltdb-backend/plugin/internal"
 )
 
 func Connect(url string) (*sqlx.DB, error) {
