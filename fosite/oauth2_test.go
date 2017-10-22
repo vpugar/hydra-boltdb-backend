@@ -30,7 +30,7 @@ func startTest(m *testing.M) int {
 	defer stopTest(boltClient)
 
 	var hasher fosite.Hasher = &fosite.BCrypt{}
-	if cm, err := client.NewClientManager(boltClient, &hasher); err != nil {
+	if cm, err := client.NewClientManager(boltClient, hasher); err != nil {
 		os.Exit(1)
 	} else {
 

@@ -88,7 +88,7 @@ imports:
 - name: github.com/ory/herodot
   version: 5bb399b8a5aa583343a2108e723b990432b4a1b4
 - name: github.com/ory/hydra
-  version: 0eff6b8de435880b9e8eae85ba065490982bbe04
+  version: master
   subpackages:
   - client
   - config
@@ -156,7 +156,7 @@ imports:
 - name: github.com/urfave/negroni
   version: fde5e16d32adc7ad637e9cd9ad21d4ebc6192535
 - name: github.com/vpugar/boltdbclient
-  version: e0544f9a3c6eb9095d9c06028d1d4bdd00e80b48
+  version: master
 - name: github.com/xtgo/uuid
   version: a0b114877d4caeffbd7f87e3757c17fce570fea7
 - name: golang.org/x/crypto

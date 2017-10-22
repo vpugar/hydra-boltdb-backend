@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package internal;
+
+message ConsentRequestRecord {
+    string ID = 1;
+    repeated string RequestedScopes = 2;
+    string ClientID = 3;
+    int64 ExpiresAt = 4;
+    string RedirectURL = 5;
+    string CSRF = 6;
+    repeated string GrantedScopes = 7;
+    string Subject = 8;
+    bytes AccessTokenExtra = 9;
+    bytes IDTokenExtra = 10;
+    string Consent = 11;
+    string DenyReason = 12;
+}

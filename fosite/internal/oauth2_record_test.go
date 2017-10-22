@@ -11,7 +11,7 @@ import (
 	"github.com/vpugar/hydra-boltdb-backend/fosite/internal"
 )
 
-var clientManager fosite.ClientManager = &client.MemoryManager{
+var clientManager client.Manager = &client.MemoryManager{
 	Clients: map[string]client.Client{"foobar": {ID: "foobar"}},
 	Hasher:  &fosite.BCrypt{},
 }
